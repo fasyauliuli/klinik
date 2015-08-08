@@ -70,16 +70,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="pasien.html"><i class="fa fa-fw fa-bar-chart-o"></i> Pasien</a>
+                        <a href="pasien.php"><i class="fa fa-fw fa-bar-chart-o"></i> Pasien</a>
                     </li>
                     <li>
-                        <a href="transaksi.html"><i class="fa fa-fw fa-table"></i> Transaksi Obat</a>
+                        <a href="transaksi.php"><i class="fa fa-fw fa-table"></i> Transaksi Obat</a>
                     </li>
                     <li class="active">
-                        <a href="stok.html"><i class="fa fa-fw fa-edit"></i> Stok Obat</a>
+                        <a href="stok.php"><i class="fa fa-fw fa-edit"></i> Stok Obat</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
