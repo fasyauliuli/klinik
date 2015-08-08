@@ -1,3 +1,8 @@
+<?php
+	include 'dbcon.php';
+	$query = mysql_query("select * from tpa_pasien where tpa_tanggal_berobat >= CURDATE()");
+	$cnt = mysql_num_rows($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,7 +119,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 text-left">
                                         <div>Jumlah Pasien yang Berobat Hari ini :</div>
-										<div class="huge">13</div>
+										<div class="huge"><?php echo $cnt ?></div>
                                     </div>
                                 </div>
                             </div>
