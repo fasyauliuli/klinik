@@ -1,5 +1,5 @@
 <NotepadPlus>
-    <Project name="klinik">
+    <Project name="klinik_mekarsari">
         <Folder name="css">
             <Folder name="plugins">
                 <File name="css\plugins\morris.css" />
@@ -12,6 +12,9 @@
             <File name="css\sb-admin-rtl.css" />
             <File name="css\sb-admin.css" />
             <File name="css\search.css" />
+        </Folder>
+        <Folder name="db">
+            <File name="db\klinik_mekarsari.sql" />
         </Folder>
         <Folder name="font-awesome">
             <Folder name="css">
@@ -89,12 +92,12 @@
         </Folder>
         <File name=".gitattributes" />
         <File name=".gitignore" />
-        <File name="detail.html" />
-        <File name="index.html" />
+        <File name="detail.php" />
+        <File name="index.php" />
         <File name="LICENSE" />
-        <File name="pasien.html" />
+        <File name="pasien.php" />
         <File name="README.md" />
-        <File name="stok.html" />
-        <File name="transaksi.html" />
+        <File name="stok.php" />
+        <File name="transaksi.php" />
     </Project>
 </NotepadPlus>
