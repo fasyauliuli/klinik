@@ -1,0 +1,100 @@
+<NotepadPlus>
+    <Project name="klinik">
+        <Folder name="css">
+            <Folder name="plugins">
+                <File name="css\plugins\morris.css" />
+            </Folder>
+            <File name="css\bootstrap-rtl.css" />
+            <File name="css\bootstrap-rtl.min.css" />
+            <File name="css\bootstrap.css" />
+            <File name="css\bootstrap.min.css" />
+            <File name="css\modal dialog.css" />
+            <File name="css\sb-admin-rtl.css" />
+            <File name="css\sb-admin.css" />
+            <File name="css\search.css" />
+        </Folder>
+        <Folder name="font-awesome">
+            <Folder name="css">
+                <File name="font-awesome\css\font-awesome.css" />
+                <File name="font-awesome\css\font-awesome.min.css" />
+            </Folder>
+            <Folder name="fonts">
+                <File name="font-awesome\fonts\fontawesome-webfont.eot" />
+                <File name="font-awesome\fonts\fontawesome-webfont.svg" />
+                <File name="font-awesome\fonts\fontawesome-webfont.ttf" />
+                <File name="font-awesome\fonts\fontawesome-webfont.woff" />
+                <File name="font-awesome\fonts\FontAwesome.otf" />
+            </Folder>
+            <Folder name="less">
+                <File name="font-awesome\less\bordered-pulled.less" />
+                <File name="font-awesome\less\core.less" />
+                <File name="font-awesome\less\fixed-width.less" />
+                <File name="font-awesome\less\font-awesome.less" />
+                <File name="font-awesome\less\icons.less" />
+                <File name="font-awesome\less\larger.less" />
+                <File name="font-awesome\less\list.less" />
+                <File name="font-awesome\less\mixins.less" />
+                <File name="font-awesome\less\path.less" />
+                <File name="font-awesome\less\rotated-flipped.less" />
+                <File name="font-awesome\less\spinning.less" />
+                <File name="font-awesome\less\stacked.less" />
+                <File name="font-awesome\less\variables.less" />
+            </Folder>
+            <Folder name="scss">
+                <File name="font-awesome\scss\font-awesome.scss" />
+                <File name="font-awesome\scss\_bordered-pulled.scss" />
+                <File name="font-awesome\scss\_core.scss" />
+                <File name="font-awesome\scss\_fixed-width.scss" />
+                <File name="font-awesome\scss\_icons.scss" />
+                <File name="font-awesome\scss\_larger.scss" />
+                <File name="font-awesome\scss\_list.scss" />
+                <File name="font-awesome\scss\_mixins.scss" />
+                <File name="font-awesome\scss\_path.scss" />
+                <File name="font-awesome\scss\_rotated-flipped.scss" />
+                <File name="font-awesome\scss\_spinning.scss" />
+                <File name="font-awesome\scss\_stacked.scss" />
+                <File name="font-awesome\scss\_variables.scss" />
+            </Folder>
+        </Folder>
+        <Folder name="fonts">
+            <File name="fonts\glyphicons-halflings-regular.eot" />
+            <File name="fonts\glyphicons-halflings-regular.svg" />
+            <File name="fonts\glyphicons-halflings-regular.ttf" />
+            <File name="fonts\glyphicons-halflings-regular.woff" />
+            <File name="fonts\glyphicons-halflings-regular.woff2" />
+        </Folder>
+        <Folder name="image">
+            <File name="image\logo-mekarsari.png" />
+        </Folder>
+        <Folder name="js">
+            <Folder name="plugins">
+                <Folder name="flot">
+                    <File name="js\plugins\flot\excanvas.min.js" />
+                    <File name="js\plugins\flot\flot-data.js" />
+                    <File name="js\plugins\flot\jquery.flot.js" />
+                    <File name="js\plugins\flot\jquery.flot.pie.js" />
+                    <File name="js\plugins\flot\jquery.flot.resize.js" />
+                    <File name="js\plugins\flot\jquery.flot.tooltip.min.js" />
+                </Folder>
+                <Folder name="morris">
+                    <File name="js\plugins\morris\morris-data.js" />
+                    <File name="js\plugins\morris\morris.js" />
+                    <File name="js\plugins\morris\morris.min.js" />
+                    <File name="js\plugins\morris\raphael.min.js" />
+                </Folder>
+            </Folder>
+            <File name="js\bootstrap.js" />
+            <File name="js\bootstrap.min.js" />
+            <File name="js\jquery.js" />
+        </Folder>
+        <File name=".gitattributes" />
+        <File name=".gitignore" />
+        <File name="detail.html" />
+        <File name="index.html" />
+        <File name="LICENSE" />
+        <File name="pasien.html" />
+        <File name="README.md" />
+        <File name="stok.html" />
+        <File name="transaksi.html" />
+    </Project>
+</NotepadPlus>
