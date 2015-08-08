@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -72,14 +75,14 @@
                     <li>
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Pasien</a>
-                    </li>
                     <li class="active">
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Transaksi Obat</a>
+                        <a href="pasien.html"><i class="fa fa-fw fa-bar-chart-o"></i> Pasien</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Stok Obat</a>
+                        <a href="transaksi.html"><i class="fa fa-fw fa-table"></i> Transaksi Obat</a>
+                    </li>
+                    <li>
+                        <a href="stok.html"><i class="fa fa-fw fa-edit"></i> Stok Obat</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
@@ -93,7 +96,6 @@
                         </ul>
                     </li>
                     
-            </div>
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -103,66 +105,20 @@
 
                 <!-- Page Heading -->
                 <div class="row">
+					                <!-- /.row -->
+                <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Transaksi Obat
-                        </h1>
-                    </div>
-				</div>
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah">
-				Tambah Transaksi
-				</button>
-				<br></br>
-
-			<!-- Modal -->
-			<div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
-				  </div>
-				  <div class="modal-body">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th></th>
-										<th>Obat</th>
-										<th>Jumlah</th>
-										<th>Satuan</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1.</td>
-										<td>Uli</td>
-										<td>10</td>
-										<td></td>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-						  </div>
-						  <div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save changes</button>
-							</div>
-						</div>
-					  </div>
-					</div>
-				<div class="row">
-                    <div class="col-lg-12">
+                        <h1 class="page-header">Database Pasien</h1>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-										<th>Obat</th>
-                                        <th>Tanggal</th>
-                                        <th>Nama Pasien</th>
-										<th></th>
+                                        <th>ID Pegawai</th>
+                                        <th>Nama</th>
+										<th>Tempat/Tanggal Lahir</th>
+                                        <th>Pekerjaan/Bagian</th>
+										<th>Berapa kali berobat</th>
 										<th></th>
                                     </tr>
                                 </thead>
@@ -171,79 +127,42 @@
                                         <td>1.</td>
                                         <td>1265</td>
                                         <td>32.3%</td>
+                                        <td>$321.33</td>
+										<td>fghdsgfsj</td>
+										<td>asjhajs</td>
 										<td>
-											<!-- Button trigger modal -->
-											<center>
-												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rincian">
-												  Rincian / Edit
-												</button>
-											</center>
-
-											<!-- Modal -->
-											<div class="modal fade" id="rincian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-											  <div class="modal-dialog" role="document">
-												<div class="modal-content">
-												  <div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
-													</div>
-												  <div class="modal-body">
-															<table class="table table-striped">
-																<thead>
-																	<tr>
-																		<th></th>
-																		<th>Jumlah</th>
-																		<th>Satuan</th>
-																		<th></th>
-																		<th></th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1.</td>
-																		<td>Uli</td>
-																		<td>10</td>
-																		<td></td>
-																		<td></td>
-																	</tr>
-																</tbody>
-															</table>
-														  </div>
-														  <div class="modal-footer">
-																	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-																	<button type="button" class="btn btn-primary">Save changes</button>
-															</div>
-														</div>
-													  </div>
-													</div>
-												</td>
-												<td>
-													<!-- Button trigger modal -->
-													<center>
-														<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus">
-														  Hapus
-														</button>
-													</center>
-													<!-- Modal -->
-													<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-													  <div class="modal-dialog" role="document">
-														<div class="modal-content">
-														  <div class="modal-body">
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<center><h3 class="modal-title" id="myModalLabel">Hapus Transaksi Obat?</h3></center>
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-																<button type="button" class="btn btn-default">Batal</button>
-															</div>
-														</div>
-													  </div>
-													</div>
-												
+										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+											<a href="detail.html">
+												<center>
+													<button type="button" class="btn btn-primary btn-md">Detail</button>
+												</center>
+											</a>
+										</td>
                                     </tr>
+									<tr>
+                                        <td>2.</td>
+                                        <td>1265</td>
+                                        <td>32.3%</td>
+                                        <td>$321.33</td>
+										<td>fghdsgfsj</td>
+										<td>asjhajs</td>
+										<td>
+										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+											<a href="detail.html">
+												<center>
+													<button type="button" class="btn btn-primary btn-md">Detail</button>
+												</center>
+											</a>
+										</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.row -->
-
+                </div>
+                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
 
@@ -258,6 +177,19 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 
