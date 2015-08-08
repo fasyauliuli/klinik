@@ -130,6 +130,14 @@
 									<p class="form-control-static">iseng/tugas</p>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<label class="col-sm-2 control-label">Tanggal Lahir</label>
+								</div>
+								<div class="col-sm-6">
+									<p class="form-control-static">1/1/1995</p>
+								</div>
+							</div>
 						</div>
 						
 						<div class="col-lg-6">
