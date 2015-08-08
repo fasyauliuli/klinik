@@ -23,6 +23,8 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+	<link href="css/search.css" rel="stylesheet">
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -144,13 +146,9 @@
                     </div>
                 </div>
 				<center>	
-					<form class="form-search" method="get" id="s" action="/">
-						<div class="input-append">
-							<input type="text" class="input-medium search-query" name="s" placeholder="Search" value="">
-							<button type="submit" class="add-on">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
-						</div>
+					<form class="form-wrapper">
+						<input type="text" id="search" placeholder="Search for CSS3, HTML5, jQuery ..." required>
+						<input type="submit" value="go" id="submit">
 					</form>
 				</center>
 			</div>
