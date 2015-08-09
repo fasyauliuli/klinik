@@ -113,8 +113,6 @@
                                         <th>No</th>
                                         <th>ID Pegawai</th>
                                         <th>Nama</th>
-										<th>Tempat/Tanggal Lahir</th>
-                                        <th>Pekerjaan/Bagian</th>
 										<th>Berapa kali berobat</th>
 										<th></th>
                                     </tr>
@@ -125,8 +123,6 @@
                                         <td>1265</td>
                                         <td>32.3%</td>
                                         <td>$321.33</td>
-										<td>fghdsgfsj</td>
-										<td>asjhajs</td>
 										<td>
 										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 											<a href="detail.php">
@@ -141,8 +137,6 @@
                                         <td>1265</td>
                                         <td>32.3%</td>
                                         <td>$321.33</td>
-										<td>fghdsgfsj</td>
-										<td>asjhajs</td>
 										<td>
 										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 											<a href="detail.html">
