@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+	include 'dbcon.php';
+	
+	$query = mysql_query("select * from m_employee");
+?>
 <head>
 
     <meta charset="utf-8">
@@ -113,45 +117,48 @@
                                         <th>No</th>
                                         <th>ID Pegawai</th>
                                         <th>Nama</th>
-										<th>Tempat/Tanggal Lahir</th>
+										<th>Tanggal Lahir</th>
                                         <th>Pekerjaan/Bagian</th>
 										<th>Berapa kali berobat</th>
 										<th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+									<?php
+									
+									$i = 0;
+									while($row = mysql_fetch_array($query))
+									{
+										$i++;
+									?>
+									
                                     <tr>
-                                        <td>1.</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-										<td>fghdsgfsj</td>
-										<td>asjhajs</td>
+                                        <td><?php echo $i?></td>
+                                        <td><?php echo $row['me_nik']?></td>
+                                        <td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
+                                        <td><?php echo $row['me_dob']?></td>
+										<?php
+											$mep_id = $row['me_mep_id'];
+											$q = mysql_query("select * from m_employee_positions where mep_id = '$mep_id'");
+											$r = mysql_fetch_array($q);
+										?>
+										<td><?php echo $r['mep_name']?></td>
+										<?php
+											$q1 = mysql_query("select * from tpa_pasien where tpa_me_id='$mep_id'");
+											$r1 = mysql_num_rows($q1);
+										?>
+										<td><?php echo $r1?></td>
 										<td>
 										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-											<a href="detail.php">
+											<a href="detail.php?id=<?php echo $mep_id?>">
 												<center>
 													<button type="button" class="btn btn-primary btn-md">Detail</button>
 												</center>
 											</a>
 										</td>
                                     </tr>
-									<tr>
-                                        <td>2.</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-										<td>fghdsgfsj</td>
-										<td>asjhajs</td>
-										<td>
-										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-											<a href="detail.html">
-												<center>
-													<button type="button" class="btn btn-primary btn-md">Detail</button>
-												</center>
-											</a>
-										</td>
-                                    </tr>
+									
+									<?php } ?>
                                 </tbody>
                             </table>
                         </div>

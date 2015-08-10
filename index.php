@@ -1,11 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 	include 'dbcon.php';
 	$query = mysql_query("select * from tpa_pasien where tpa_tanggal_berobat >= CURDATE()");
 	$cnt = mysql_num_rows($query);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 
     <meta charset="utf-8">

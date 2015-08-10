@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+	include 'dbcon.php';
+	
+	$mep_id = $_GET['id'];
+	$query = mysql_query("select * from m_employee where me_mep_id = '$mep_id'");
+	$row = mysql_fetch_array($query);
+	
+	$q = mysql_query("select * from m_employee_positions where mep_id = '$mep_id'");
+	$r = mysql_fetch_array($q);
+?>
 
 <head>
-
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +45,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -115,19 +124,19 @@
 						<div class="col-lg-6">
 							<div class="row">
 								<div class="col-sm-6">
-									<label class="col-sm-2 control-label">Nama</label>
+									<label class="col-sm-2">Nama</label>
 								</div>
 								<div class="col-sm-6">
-									<p class="form-control-static">uli uli</p>
+									<p><?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-sm-6">
-									<label class="col-sm-2 control-label">Pekerjaan/Bagian</label>
+									<label class="col-sm-2">Pekerjaan/Bagian</label>
 								</div>
 								<div class="col-sm-6">
-									<p class="form-control-static">iseng/tugas</p>
+									<p><?php echo $r['mep_name']?></p>
 								</div>
 							</div>
 						</div>
@@ -148,11 +157,22 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<center><h3 class="modal-title" id="myModalLabel">Keterangan Sakit</h3></center>
 								  </div>
+								  
 								  <div class="modal-body">
-									1. ................
+									  <label>Masukkan Keterangan Sakit</label>
+										<div class="multi-field-wrapper">
+										  <div class="multi-fields">
+											<div class="multi-field">
+											  <input type="text" name="stuff[]">
+											  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+											</div>
+										  </div>
+										<button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+									  </div>
 								  </div>
 
-								  <div class="modal-header">
+								
+								<div class="modal-header">
 									<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
 								  </div>
 								  <div class="modal-body">
@@ -180,11 +200,11 @@
 								  <div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-									</div>
+								  </div>
+								 
 								</div>
 							  </div>
 							</div>
-						
 						
 							<h2>Riwayat Berobat</h2>
 							<div class="table-responsive">
@@ -314,6 +334,19 @@
     <script src="js/plugins/flot/jquery.flot.resize.js"></script>
     <script src="js/plugins/flot/jquery.flot.pie.js"></script>
     <script src="js/plugins/flot/flot-data.js"></script>
+
+	<script>
+	$('.multi-field-wrapper').each(function() {
+		var $wrapper = $('.multi-fields', this);
+		$(".add-field", $(this)).click(function(e) {
+			$('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+		});
+		$('.multi-field .remove-field', $wrapper).click(function() {
+			if ($('.multi-field', $wrapper).length > 1)
+				$(this).parent('.multi-field').remove();
+		});
+	});
+	</script>
 
 </body>
 
