@@ -120,37 +120,75 @@
 						<h1 class="page-header">
                             Detail Pasien
                         </h1>
-						
+						</br>
 						<div class="col-lg-6">
 							<div class="row">
-								<div class="col-sm-6">
-									<label class="col-sm-2">Nama</label>
+								<div class="col-sm-4">
+									<label class="col-sm-12">NIK</label>
 								</div>
 								<div class="col-sm-6">
-									<p><?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6">
-									<label class="col-sm-2">Pekerjaan/Bagian</label>
-								</div>
-								<div class="col-sm-6">
-									<p><?php echo $r['mep_name']?></p>
+									<p>:&nbsp <?php echo $row['me_nik']?></p>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-6">
-									<label class="col-sm-2 control-label">Tanggal Lahir</label>
+								<div class="col-sm-4">
+									<label class="col-sm-12">Nama</label>
 								</div>
 								<div class="col-sm-6">
-									<p class="form-control-static">1/1/1995</p>
+									<p>:&nbsp <?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12">Pekerjaan/Bagian</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php echo $r['mep_name']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12 control-label">Tanggal Lahir</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php echo $row['me_dob']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12 control-label">Jenis Kelamin</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php if($row['me_gender']) echo 'Laki-laki'; else echo 'Perempuan';?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12 control-label">No. HP</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php echo $row['me_hp']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12 control-label">Email</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php echo $row['me_email']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="col-sm-12 control-label">Alamat</label>
+								</div>
+								<div class="col-sm-6">
+									<p>:&nbsp <?php echo $row['me_address']?></p>
 								</div>
 							</div>
 						</div>
 						
 						<div class="col-lg-6">
-							</br>
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahT">
 							Tambah Transaksi

@@ -117,11 +117,8 @@
                                         <th>No</th>
                                         <th>ID Pegawai</th>
                                         <th>Nama</th>
-<<<<<<< HEAD
 										<th>Tanggal Lahir</th>
                                         <th>Pekerjaan/Bagian</th>
-=======
->>>>>>> origin/master
 										<th>Berapa kali berobat</th>
 										<th></th>
                                     </tr>
@@ -136,7 +133,6 @@
 									?>
 									
                                     <tr>
-<<<<<<< HEAD
                                         <td><?php echo $i?></td>
                                         <td><?php echo $row['me_nik']?></td>
                                         <td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
@@ -152,26 +148,6 @@
 											$r1 = mysql_num_rows($q1);
 										?>
 										<td><?php echo $r1?></td>
-=======
-                                        <td>1.</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-										<td>
-										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-											<a href="detail.php">
-												<center>
-													<button type="button" class="btn btn-primary btn-md">Detail</button>
-												</center>
-											</a>
-										</td>
-                                    </tr>
-									<tr>
-                                        <td>2.</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
->>>>>>> origin/master
 										<td>
 										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 											<a href="detail.php?id=<?php echo $mep_id?>">
@@ -181,7 +157,6 @@
 											</a>
 										</td>
                                     </tr>
-									
 									<?php } ?>
                                 </tbody>
                             </table>
