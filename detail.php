@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Klinik Mekarsari</a>
+                <a class="navbar-brand" href="index.php">Klinik Mekarsari</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -137,6 +137,14 @@
 								</div>
 								<div class="col-sm-6">
 									<p><?php echo $r['mep_name']?></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<label class="col-sm-2 control-label">Tanggal Lahir</label>
+								</div>
+								<div class="col-sm-6">
+									<p class="form-control-static">1/1/1995</p>
 								</div>
 							</div>
 						</div>
