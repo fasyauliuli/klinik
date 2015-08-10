@@ -15,18 +15,26 @@
 
     <title>Klinik Mekarsari</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- from sb2 -->
+	<!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- end from sb2 -->
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,27 +60,6 @@
                 </button>
                 <a class="navbar-brand" href="index.php">Klinik Mekarsari</a>
             </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -99,101 +86,118 @@
                             </li>
                         </ul>
                     </li>
-                    
+                </ul>
+			</div>
             <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Database Pasien</h1>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>ID Pegawai</th>
-                                        <th>Nama</th>
-										<th>Tanggal Lahir</th>
-                                        <th>Pekerjaan/Bagian</th>
-										<th>Berapa kali berobat</th>
-										<th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-									<?php
-									
-									$i = 0;
-									while($row = mysql_fetch_array($query))
-									{
-										$i++;
-									?>
-									
-                                    <tr>
-                                        <td><?php echo $i?></td>
-                                        <td><?php echo $row['me_nik']?></td>
-                                        <td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
-                                        <td><?php echo $row['me_dob']?></td>
-										<?php
-											$mep_id = $row['me_mep_id'];
-											$q = mysql_query("select * from m_employee_positions where mep_id = '$mep_id'");
-											$r = mysql_fetch_array($q);
-										?>
-										<td><?php echo $r['mep_name']?></td>
-										<?php
-											$q1 = mysql_query("select * from tpa_pasien where tpa_me_id='$mep_id'");
-											$r1 = mysql_num_rows($q1);
-										?>
-										<td><?php echo $r1?></td>
-										<td>
-										<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-											<a href="detail.php?id=<?php echo $mep_id?>">
-												<center>
-													<button type="button" class="btn btn-primary btn-md">Detail</button>
-												</center>
-											</a>
-										</td>
-                                    </tr>
-									<?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Database Pasien</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="dataTable_wrapper">
+									<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+										<thead>
+											<tr>
+												<th>No</th>
+												<th>ID Pegawai</th>
+												<th>Nama</th>
+												<th>Tanggal Lahir</th>
+												<th>Pekerjaan/Bagian</th>
+												<th>Berapa kali berobat</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+											
+											$i = 0;
+											while($row = mysql_fetch_array($query))
+											{
+												$i++;
+											?>
+											
+											<tr>
+												<td class="text-center"><?php echo $i?></td>
+												<td><?php echo $row['me_nik']?></td>
+												<td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
+												<td class="text-center"><?php echo $row['me_dob']?></td>
+												<?php
+													$mep_id = $row['me_mep_id'];
+													$q = mysql_query("select * from m_employee_positions where mep_id = '$mep_id'");
+													$r = mysql_fetch_array($q);
+												?>
+												<td><?php echo $r['mep_name']?></td>
+												<?php
+													$q1 = mysql_query("select * from tpa_pasien where tpa_me_id='$mep_id'");
+													$r1 = mysql_num_rows($q1);
+												?>
+												<td class="text-center"><?php echo $r1?></td>
+												<td>
+												<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+													<a href="detail.php?id=<?php echo $mep_id?>">
+														<center>
+															<button type="button" class="btn btn-primary btn-md">Detail</button>
+														</center>
+													</a>
+												</td>
+											</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+	<!-- from sb2-->
+	<!-- jQuery -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/flot-data.js"></script>
-
+	<!-- DataTables JavaScript -->
+    <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	
+	<!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+	
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+	<!-- end from sb2-->
+	
 </body>
 
 </html>

@@ -59,27 +59,6 @@
                 </button>
                 <a class="navbar-brand" href="index.php">Klinik Mekarsari</a>
             </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -126,64 +105,88 @@
 								<div class="col-sm-4">
 									<label class="col-sm-12">NIK</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_nik']?></p>
+									<p><?php echo $row['me_nik']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12">Nama</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
+									<p><?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12">Pekerjaan/Bagian</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $r['mep_name']?></p>
+									<p><?php echo $r['mep_name']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12 control-label">Tanggal Lahir</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_dob']?></p>
+									<p><?php echo $row['me_dob']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12 control-label">Jenis Kelamin</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php if($row['me_gender']) echo 'Laki-laki'; else echo 'Perempuan';?></p>
+									<p><?php if($row['me_gender']) echo 'Laki-laki'; else echo 'Perempuan';?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12 control-label">No. HP</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_hp']?></p>
+									<p><?php echo $row['me_hp']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12 control-label">Email</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_email']?></p>
+									<p><?php echo $row['me_email']?></p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12 control-label">Alamat</label>
 								</div>
+								<div class="col-sm-1">
+									<p>:</p>
+								</div>
 								<div class="col-sm-6">
-									<p>:&nbsp <?php echo $row['me_address']?></p>
+									<p><?php echo $row['me_address']?></p>
 								</div>
 							</div>
 						</div>
@@ -206,15 +209,15 @@
 								  
 								  <div class="modal-body">
 									  <label>Masukkan Keterangan Sakit</label>
-										<div class="multi-field-wrapper">
-										  <div class="multi-fields">
-											<div class="multi-field">
-											  <input type="text" name="stuff[]">
-											  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
-											</div>
-										  </div>
-										<button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+									<div class="multi-field-wrapper">
+									  <div class="multi-fields">
+										<div class="multi-field">
+										  <input type="text" name="stuff[]">
+										  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+										</div>
 									  </div>
+									  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+									</div>
 								  </div>
 
 								
@@ -226,20 +229,21 @@
 										<thead>
 											<tr>
 												<th></th>
-												<th>Obat</th>
+												<th>Nama Obat</th>
 												<th>Jumlah</th>
-												<th></th>
 												<th></th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>1.</td>
-												<td>Uli</td>
-												<td>10</td>
-												<td></td>
-												<td></td>
-											</tr>
+										<tbody class="multi-field-wrapper">
+											<div class="multi-fields">
+												<tr class="multi-field">
+													<td>1.</td>
+													<td>Uli</td>
+													<td>10</td>
+													<td class="remove-field"></td>
+												</tr>
+											</div>
+											<button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
 										</tbody>
 									</table>
 								  </div>
@@ -271,7 +275,7 @@
 												<!-- Button trigger modal -->
 												<center>
 													<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rincian">
-													  Rincian / Edit
+													  Rincian
 													</button>
 												</center>
 
@@ -368,6 +372,12 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+	
     <!-- Morris Charts JavaScript -->
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
