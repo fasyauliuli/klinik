@@ -85,7 +85,8 @@
                             </li>
                         </ul>
                     </li>
-
+				</ul>
+			</div>
             <!-- /.navbar-collapse -->
         </nav>
 
