@@ -121,19 +121,6 @@
 					</center>
 				</div>
 				</br>
-				
-				<div class="row">
-					<form action="" class="form-inline">
-						<div class="form-group col-lg-4 col-lg-offset-4">
-							<input list="nama_peg" type="text" class="form-control" placeholder="Nama Pegawai"/>
-							<datalist id="nama_peg">
-								<option value="Uli">
-								<option value="Amir">
-							</datalist>
-							<button type="button" class="btn btn-primary btn-md">SEARCH</button>
-						</div>
-					</form>
-				</div>
 			</div>
             <!-- /.container-fluid -->
         </div>
