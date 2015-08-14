@@ -1122,5 +1122,6 @@
         <File name="removeStock.php" />
         <File name="stok.php" />
         <File name="transaksi.php" />
+        <File name="addTrans.php" />
     </Project>
 </NotepadPlus>

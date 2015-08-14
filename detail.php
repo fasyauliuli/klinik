@@ -100,7 +100,7 @@
                             Detail Pasien
                         </h1>
 						</br>
-						<div class="col-lg-6">
+						<div class="well col-lg-6">
 							<div class="row">
 								<div class="col-sm-4">
 									<label class="col-sm-12">NIK</label>
@@ -200,58 +200,74 @@
 							
 							<!-- Modal -->
 							<div class="modal fade" id="tambahT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							  <div class="modal-dialog modal-sm" role="document">
+							  <div class="modal-dialog" role="document">
 								<div class="modal-content">
-								  <div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<center><h3 class="modal-title" id="myModalLabel">Keterangan Sakit</h3></center>
-								  </div>
-								  
-								  <div class="modal-body">
-									  <label>Masukkan Keterangan Sakit</label>
-									<div class="multi-field-wrapper">
-									  <div class="multi-fields">
-										<div class="multi-field">
-										  <input type="text" name="stuff[]">
-										  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+									<form action="addTrans.php" method="POST">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<center><h3 class="modal-title" id="myModalLabel">Keterangan Sakit</h3></center>
+									  </div>
+									  
+									  <div class="modal-body">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-2">
+												<label>Masukkan Keterangan Sakit</label>
+												<div class="multi-field-wrapper">
+												  <div class="multi-fields">
+													<div class="multi-field">
+													  <input type="text" name="ketSakit[]" required>
+													  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+													</div>
+												  </div>
+												  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+												</div>
+											</div>
 										</div>
 									  </div>
-									  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
-									</div>
-								  </div>
 
-								
-								<div class="modal-header">
-									<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
-								  </div>
-								  <div class="modal-body">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th></th>
-												<th>Nama Obat</th>
-												<th>Jumlah</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody class="multi-field-wrapper">
-											<div class="multi-fields">
-												<tr class="multi-field">
-													<td>1.</td>
-													<td>Uli</td>
-													<td>10</td>
-													<td class="remove-field"></td>
-												</tr>
+									
+									<div class="modal-header">
+										<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
+									  </div>
+									  
+									  <div class="modal-body">
+										<div class="row">
+											<div class="col-sm-10 col-sm-offset-2">
+												<div class="row">
+													<div class="col-sm-5">
+														<label>Nama Obat</label>
+													</div>
+													<div class="col-sm-5">
+														<label>Jumlah</label>
+													</div>
+												</div>
+												
+												<div class="multi-field-wrapper">
+												  <div class="multi-fields">
+													<div class="multi-field">
+													  <input type="text" name="namaObat[]" list="n_obat" required>
+													  <datalist id="n_obat">
+														<?php
+															$query = mysql_query("select * from m_obat");
+															while($row = mysql_fetch_array($query)){
+														?>
+														<option value="<?php echo $row['mob_nama_obat']?>"></option>
+															<?php }?>
+													  </datalist>
+													  <input type="text" name="jumlah[]" required>
+													  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+													</div>
+												  </div>
+												  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+												</div>
 											</div>
-											<button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
-										</tbody>
-									</table>
-								  </div>
-								  <div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-								  </div>
-								 
+										</div>
+									  </div>
+									  <div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary" >Submit</button>
+									  </div>
+									</form>
 								</div>
 							  </div>
 							</div>
