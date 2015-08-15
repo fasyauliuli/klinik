@@ -79,10 +79,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Laporan Bulanan</a>
+                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
                             </li>
                             <li>
-                                <a href="#">Laporan Harian</a>
+                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
