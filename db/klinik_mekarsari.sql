@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2015 at 10:17 AM
+-- Generation Time: Aug 16, 2015 at 10:26 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -88,7 +88,18 @@ CREATE TABLE IF NOT EXISTS `m_obat` (
   `mob_tanggal_beli` date NOT NULL,
   `mob_jumlah` int(11) NOT NULL,
   `mob_satuan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `m_obat`
+--
+
+INSERT INTO `m_obat` (`mob_id`, `mob_nama_obat`, `mob_tanggal_beli`, `mob_jumlah`, `mob_satuan`) VALUES
+(1, 'promag', '2015-08-05', 10, 'strip'),
+(2, 'OBH', '2015-07-07', 20, 'botol'),
+(3, 'actifed', '2015-08-07', 15, 'botol'),
+(4, 'vitacimin', '2015-08-19', 1, 'kardus'),
+(5, 'albothyl', '2015-08-12', 18, 'botol');
 
 -- --------------------------------------------------------
 
@@ -107,16 +118,48 @@ CREATE TABLE IF NOT EXISTS `m_potongan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tks_keterangan_sakit`
+--
+
+CREATE TABLE IF NOT EXISTS `tks_keterangan_sakit` (
+  `tks_id` int(11) NOT NULL,
+  `tks_tpa_id` int(11) NOT NULL,
+  `tks_nama_penyakit` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tks_keterangan_sakit`
+--
+
+INSERT INTO `tks_keterangan_sakit` (`tks_id`, `tks_tpa_id`, `tks_nama_penyakit`) VALUES
+(1, 1, 'demam'),
+(2, 1, 'batuk'),
+(3, 9, 'sakit kepala'),
+(4, 9, 'maag');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tob_transaksi_obat`
 --
 
 CREATE TABLE IF NOT EXISTS `tob_transaksi_obat` (
   `tob_id` int(11) NOT NULL,
+  `tob_mob_id` int(11) NOT NULL,
   `tob_tpa_id` int(11) NOT NULL,
-  `tob_mob_nama_obat` text NOT NULL,
-  `tob_mob_jumlah` int(11) NOT NULL,
-  `tob_satuan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tob_mob_jumlah` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tob_transaksi_obat`
+--
+
+INSERT INTO `tob_transaksi_obat` (`tob_id`, `tob_mob_id`, `tob_tpa_id`, `tob_mob_jumlah`) VALUES
+(1, 1, 1, 10),
+(2, 2, 9, 8),
+(3, 3, 3, 2),
+(4, 4, 4, 3),
+(5, 5, 5, 14);
 
 -- --------------------------------------------------------
 
@@ -126,14 +169,25 @@ CREATE TABLE IF NOT EXISTS `tob_transaksi_obat` (
 
 CREATE TABLE IF NOT EXISTS `tpa_pasien` (
   `tpa_id` int(11) NOT NULL,
-  `tpa_tanggal_berobat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tpa_tanggal_berobat` date NOT NULL,
   `tpa_me_id` int(11) NOT NULL,
-  `tpa_nama` text NOT NULL,
-  `tpa_ttl` date NOT NULL,
-  `tpa_mep_name` text NOT NULL,
-  `tpa_keterangan` text NOT NULL,
-  `tpa_jumlahberobat` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tpa_keterangan` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tpa_pasien`
+--
+
+INSERT INTO `tpa_pasien` (`tpa_id`, `tpa_tanggal_berobat`, `tpa_me_id`, `tpa_keterangan`) VALUES
+(1, '2015-08-15', 1, 'demam, sakit kepala'),
+(2, '2015-08-18', 2, 'batuk'),
+(3, '2015-08-15', 3, 'asma'),
+(4, '2015-08-15', 4, 'demam'),
+(5, '2015-08-15', 5, 'sakit kepala'),
+(7, '2015-08-15', 4, 'demam'),
+(9, '2015-08-15', 1, 'batuk'),
+(10, '2015-08-15', 5, 'sakit kepala'),
+(17, '2015-08-15', 3, 'asma');
 
 --
 -- Indexes for dumped tables
@@ -164,6 +218,12 @@ ALTER TABLE `m_potongan`
   ADD PRIMARY KEY (`mpo_id`);
 
 --
+-- Indexes for table `tks_keterangan_sakit`
+--
+ALTER TABLE `tks_keterangan_sakit`
+  ADD PRIMARY KEY (`tks_id`);
+
+--
 -- Indexes for table `tob_transaksi_obat`
 --
 ALTER TABLE `tob_transaksi_obat`
@@ -183,22 +243,27 @@ ALTER TABLE `tpa_pasien`
 -- AUTO_INCREMENT for table `m_obat`
 --
 ALTER TABLE `m_obat`
-  MODIFY `mob_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `m_potongan`
 --
 ALTER TABLE `m_potongan`
   MODIFY `mpo_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tks_keterangan_sakit`
+--
+ALTER TABLE `tks_keterangan_sakit`
+  MODIFY `tks_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `tob_transaksi_obat`
 --
 ALTER TABLE `tob_transaksi_obat`
-  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tpa_pasien`
 --
 ALTER TABLE `tpa_pasien`
-  MODIFY `tpa_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tpa_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

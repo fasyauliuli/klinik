@@ -137,7 +137,7 @@
 												<td><?php echo $ro['mob_nama_obat']?></td>
 												<td><?php echo $rw['tpa_tanggal_berobat']?></td>
 												<td><?php echo $row['tob_mob_jumlah']?></td>
-												<td><?php echo $row['tob_mob_satuan']?></td>
+												<td><?php echo $ro['mob_satuan']?></td>
 											</tr>
 											<?php } ?>
 										</tbody>
