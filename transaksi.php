@@ -99,6 +99,7 @@
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
+				
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
@@ -121,15 +122,22 @@
 											$i = 0;
 											while($row = mysql_fetch_array($query))
 											{
+												$mob_id = $row['tob_mob_id'];
+												$tpa_id = $row['tob_tpa_id'];
+												$qr = mysql_query("select * from m_obat where mob_id = '$mob_id'");
+												$ro = mysql_fetch_array($qr);
+
+												$qy = mysql_query("select * from tpa_pasien where tpa_id = '$tpa_id'");
+												$rw = mysql_fetch_array($qy);
 												$i++;
 											?>
 											
 											<tr>
 												<td><?php echo $i?></td>
-												<td><?php echo $row['tob_mob_nama_obat']?></td>
-												<td><?php echo $row['tob_tpa_tgl_berobat']?></td>
+												<td><?php echo $ro['mob_nama_obat']?></td>
+												<td><?php echo $rw['tpa_tanggal_berobat']?></td>
 												<td><?php echo $row['tob_mob_jumlah']?></td>
-												<td><?php echo $r['tob_satuan']?></td>
+												<td><?php echo $row['tob_mob_satuan']?></td>
 											</tr>
 											<?php } ?>
 										</tbody>

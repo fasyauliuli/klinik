@@ -3,12 +3,17 @@
 <?php
 	include 'dbcon.php';
 	
+	
 	$mep_id = $_GET['id'];
+	
 	$query = mysql_query("select * from m_employee where me_mep_id = '$mep_id'");
 	$row = mysql_fetch_array($query);
+	$me_id = $row['me_id'];
 	
 	$q = mysql_query("select * from m_employee_positions where mep_id = '$mep_id'");
 	$r = mysql_fetch_array($q);
+	
+	$qr = mysql_query("select * from tpa_pasien where tpa_me_id = '$me_id'");
 ?>
 
 <head>
@@ -213,15 +218,15 @@
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-2">
 												<label>Masukkan Keterangan Sakit</label>
-												<div class="multi-field-wrapper">
-												  <div class="multi-fields">
-													<div class="multi-field">
-													  <input type="text" name="ketSakit[]" required>
-													  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+													<div class="multi-field-wrapper">
+													  <div class="multi-fields">
+														<div class="multi-field">
+														  <input type="text" name="ketSakit[]" required>
+														  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+														</div>
+													  </div>
+													  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
 													</div>
-												  </div>
-												  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
-												</div>
 											</div>
 										</div>
 									  </div>
@@ -266,7 +271,7 @@
 									  </div>
 									  <div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-												<button type="submit" class="btn btn-primary" >Submit</button>
+												<button type="submit" form="addTrans" class="btn btn-primary" >Submit</button>
 									  </div>
 									</form>
 								</div>
@@ -285,19 +290,33 @@
 										</tr>
 									</thead>
 									<tbody>
+										<?php
+											
+											$i = 0;
+											while($rw = mysql_fetch_array($qr))
+											{
+												$tpa_id = $rw['tpa_id'];
+												$i++;
+											?>
 										<tr>
-											<td style="text-align: center">1.</td>
-											<td>12 Agustus 2015</td>
+											<td style="text-align: center"><?php echo $i?></td>
+											<td>
+												<?php echo $rw['tpa_tanggal_berobat']?>	
+											</td>
 											<td>
 												<!-- Button trigger modal -->
 												<center>
-													<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rincian">
+													<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rincian<?php echo $tpa_id?>">
 													  Rincian
 													</button>
 												</center>
 
+												<?php
+													
+													$qy = mysql_query("select * from tks_keterangan_sakit where tks_tpa_id = '$tpa_id'");
+												?>
 												<!-- Modal -->
-												<div class="modal fade" id="rincian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+												<div class="modal fade" id="rincian<?php echo $tpa_id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												  <div class="modal-dialog modal-sm" role="document">
 													<div class="modal-content">
 													  <div class="modal-header">
@@ -305,12 +324,25 @@
 														<center><h3 class="modal-title" id="myModalLabel">Keterangan Sakit</h3></center>
 													  </div>
 													  <div class="modal-body">
-														1. ................
+													  <?php
+											
+														$j = 0;
+														while($baris = mysql_fetch_array($qy))
+														{
+															$j++;
+														?>
+													   <p><?php echo $baris['tks_nama_penyakit']?></p>
+														<?php } ?>
 													  </div>
-
+													  
 													  <div class="modal-header">
 														<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
 													  </div>
+														<?php
+															
+															$kolom = mysql_query("select * from tob_transaksi_obat where tob_tpa_id = '$tpa_id'");
+															
+														?>
 													  <div class="modal-body">
 														<table class="table table-striped">
 															<thead>
@@ -323,13 +355,24 @@
 																</tr>
 															</thead>
 															<tbody>
-																<tr>
-																	<td>1.</td>
-																	<td>Uli</td>
-																	<td>10</td>
-																	<td></td>
-																	<td></td>
-																</tr>
+																<?php
+											
+																	$k = 0;
+																	while($br = mysql_fetch_array($kolom))
+																	{
+																		$mob_id = $br['tob_mob_id'];
+																		$kl = mysql_query("select * from m_obat where mob_id = '$mob_id'");
+																		$b = mysql_fetch_array($kl);
+																		$k++;
+																	?>
+																		<tr>
+																			<td><?php echo $k?></td>
+																			<td><?php echo $b['mob_nama_obat']?></td>
+																			<td><?php echo $br['tob_mob_jumlah']?></td>
+																			<td></td>
+																			<td></td>
+																		</tr>
+																	<?php } ?>
 															</tbody>
 														</table>
 													  </div>
@@ -344,12 +387,12 @@
 											<td>
 												<!-- Button trigger modal -->
 												<center>
-													<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus">
+													<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat<?php echo $tpa_id?> ">
 													  Hapus
 													</button>
 												</center>
 												<!-- Modal -->
-												<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+												<div class="modal fade" id="hapus_riwayat<?php echo $tpa_id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												  <div class="modal-dialog modal-sm" role="document">
 													<div class="modal-content">
 													  <div class="modal-body">
@@ -357,7 +400,10 @@
 														<center><h4 class="modal-title" id="myModalLabel">Hapus Riwayat Berobat?</h4></center>
 														</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+															<form action="removeRiwayat.php" method="POST">
+																<input name="id_pasien" type="hidden" value="<?php echo $tpa_id?>"></input>
+																<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+															</form>
 															<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 														</div>
 													</div>
@@ -365,6 +411,7 @@
 												</div>
 											</td>
 										</tr>
+										<?php } ?>
 									</tbody>
 								</table>
 							</div>
