@@ -251,7 +251,7 @@
 												<div class="multi-field-wrapper">
 												  <div class="multi-fields">
 													<div class="multi-field">
-													  <input type="text" name="namaObat[]" list="n_obat" required>
+													  <input type="text" name="namaObat[]" list="n_obat" required></input>
 													  <datalist id="n_obat">
 														<?php
 															$query = mysql_query("select * from m_obat");
@@ -260,7 +260,7 @@
 														<option value="<?php echo $row['mob_nama_obat']?>"></option>
 															<?php }?>
 													  </datalist>
-													  <input type="number" name="jumlah[]" id="jumlahObat" required>
+													  <input type="number" name="jumlah[]" id="jumlahObat" required></input>
 													  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
 													</div>
 												  </div>
@@ -272,12 +272,15 @@
 									  </div>
 									  <div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-												<input type="hidden" name="me_id" value="<?php echo $me_id?>">
-												<?php $p = mysql_query("select tpa_id from tpa_pasien");
+												<input type="hidden" name="me_id" value="<?php echo $me_id?>"></input>
+												<?php $p = mysql_query("select * from tpa_pasien");
 													  $s = mysql_fetch_array($p)
 												?>
-												<input type="hidden" name="idPasienK" value="<?php echo $s['tpa_id'];?>">
-												<input type="hidden" name="idPasienT" value="<?php echo $s['tpa_id'];?>">
+												<input type="hidden" name="tgl" value="<?php echo $s['tpa_tanggal_berobat']?>"></input>
+												<input type="hidden" name="idPasienK" value="<?php echo $s['tpa_id']?>"></input>
+												<input type="hidden" name="idObat" value="<?php echo $br['tob_mob_id']?>"></input>
+												<input type="hidden" name="idPasienT" value="<?php echo $s['tpa_id']?>"></input>
+												<input type="hidden" name="mep_id" value="<?php echo $mep_id?>"></input>
 												<button type="submit" class="btn btn-primary" >Submit</button>
 									  </div>
 									</form>
