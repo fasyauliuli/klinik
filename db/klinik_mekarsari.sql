@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2015 at 10:26 AM
+-- Generation Time: Aug 17, 2015 at 08:26 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -125,17 +125,7 @@ CREATE TABLE IF NOT EXISTS `tks_keterangan_sakit` (
   `tks_id` int(11) NOT NULL,
   `tks_tpa_id` int(11) NOT NULL,
   `tks_nama_penyakit` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tks_keterangan_sakit`
---
-
-INSERT INTO `tks_keterangan_sakit` (`tks_id`, `tks_tpa_id`, `tks_nama_penyakit`) VALUES
-(1, 1, 'demam'),
-(2, 1, 'batuk'),
-(3, 9, 'sakit kepala'),
-(4, 9, 'maag');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -148,18 +138,17 @@ CREATE TABLE IF NOT EXISTS `tob_transaksi_obat` (
   `tob_mob_id` int(11) NOT NULL,
   `tob_tpa_id` int(11) NOT NULL,
   `tob_mob_jumlah` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tob_transaksi_obat`
 --
 
 INSERT INTO `tob_transaksi_obat` (`tob_id`, `tob_mob_id`, `tob_tpa_id`, `tob_mob_jumlah`) VALUES
-(1, 1, 1, 10),
-(2, 2, 9, 8),
 (3, 3, 3, 2),
 (4, 4, 4, 3),
-(5, 5, 5, 14);
+(5, 5, 5, 14),
+(6, 0, 0, 12);
 
 -- --------------------------------------------------------
 
@@ -170,24 +159,21 @@ INSERT INTO `tob_transaksi_obat` (`tob_id`, `tob_mob_id`, `tob_tpa_id`, `tob_mob
 CREATE TABLE IF NOT EXISTS `tpa_pasien` (
   `tpa_id` int(11) NOT NULL,
   `tpa_tanggal_berobat` date NOT NULL,
-  `tpa_me_id` int(11) NOT NULL,
-  `tpa_keterangan` text NOT NULL
+  `tpa_me_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tpa_pasien`
 --
 
-INSERT INTO `tpa_pasien` (`tpa_id`, `tpa_tanggal_berobat`, `tpa_me_id`, `tpa_keterangan`) VALUES
-(1, '2015-08-15', 1, 'demam, sakit kepala'),
-(2, '2015-08-18', 2, 'batuk'),
-(3, '2015-08-15', 3, 'asma'),
-(4, '2015-08-15', 4, 'demam'),
-(5, '2015-08-15', 5, 'sakit kepala'),
-(7, '2015-08-15', 4, 'demam'),
-(9, '2015-08-15', 1, 'batuk'),
-(10, '2015-08-15', 5, 'sakit kepala'),
-(17, '2015-08-15', 3, 'asma');
+INSERT INTO `tpa_pasien` (`tpa_id`, `tpa_tanggal_berobat`, `tpa_me_id`) VALUES
+(3, '2015-08-15', 3),
+(4, '2015-08-15', 4),
+(5, '2015-08-15', 5),
+(7, '2015-08-15', 4),
+(10, '2015-08-15', 5),
+(13, '2015-08-27', 1),
+(17, '2015-08-15', 3);
 
 --
 -- Indexes for dumped tables
@@ -253,12 +239,12 @@ ALTER TABLE `m_potongan`
 -- AUTO_INCREMENT for table `tks_keterangan_sakit`
 --
 ALTER TABLE `tks_keterangan_sakit`
-  MODIFY `tks_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `tks_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tob_transaksi_obat`
 --
 ALTER TABLE `tob_transaksi_obat`
-  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tpa_pasien`
 --

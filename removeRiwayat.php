@@ -2,12 +2,11 @@
 	include 'dbcon.php';
 	
 	$id_pasien = $_POST['id_pasien'];
-	$id_obat = $POST['id_obat'];
-	$id_ket = $POST['id_ket'];
+	$mep_id = $_POST['mep_id'];
 	
-	mysql_query("DELETE FROM `tpa_pasien` WHERE tpa_pasien='$id_pasien'");
-	mysql_query("DELETE FROM `tob_transaksi_obat` WHERE tob_mob_id = '$id_obat'");
-	mysql_query("DELETE FROM `tks_keterangan_sakit` WHERE tks_id = '$id_ket'");
+	mysql_query("DELETE FROM `tpa_pasien` WHERE tpa_id = '$id_pasien'");
+	mysql_query("DELETE FROM `tob_transaksi_obat` WHERE tob_tpa_id = '$id_pasien'");
+	mysql_query("DELETE FROM `tks_keterangan_sakit` WHERE tks_tpa_id = '$id_pasien'");
 	
-	header("location: detail.php");
+	header("location: detail.php?id=$mep_id");
 ?>

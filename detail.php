@@ -221,11 +221,11 @@
 													<div class="multi-field-wrapper">
 													  <div class="multi-fields">
 														<div class="multi-field">
-														  <input type="text" name="ketSakit[]" required>
+															<input type="text" name="ketSakit[]" id="ketSakit" required>
 														  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
 														</div>
 													  </div>
-													  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+													  <button type="button" class="add-field btn btn-primary btn-sm">Tambah</button>
 													</div>
 											</div>
 										</div>
@@ -260,18 +260,25 @@
 														<option value="<?php echo $row['mob_nama_obat']?>"></option>
 															<?php }?>
 													  </datalist>
-													  <input type="text" name="jumlah[]" required>
+													  <input type="number" name="jumlah[]" id="jumlahObat" required>
 													  <button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
 													</div>
 												  </div>
-												  <button type="submit" class="add-field btn btn-primary btn-sm">Tambah</button>
+												  <button type="button" class="add-field btn btn-primary btn-sm">Tambah</button>
+												
 												</div>
 											</div>
 										</div>
 									  </div>
 									  <div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-												<button type="submit" form="addTrans" class="btn btn-primary" >Submit</button>
+												<input type="hidden" name="me_id" value="<?php echo $me_id?>">
+												<?php $p = mysql_query("select tpa_id from tpa_pasien");
+													  $s = mysql_fetch_array($p)
+												?>
+												<input type="hidden" name="idPasienK" value="<?php echo $s['tpa_id'];?>">
+												<input type="hidden" name="idPasienT" value="<?php echo $s['tpa_id'];?>">
+												<button type="submit" class="btn btn-primary" >Submit</button>
 									  </div>
 									</form>
 								</div>
@@ -392,17 +399,18 @@
 													</button>
 												</center>
 												<!-- Modal -->
-												<div class="modal fade" id="hapus_riwayat<?php echo $tpa_id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+												<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="hapus_riwayat<?php echo $tpa_id?>">
 												  <div class="modal-dialog modal-sm" role="document">
 													<div class="modal-content">
 													  <div class="modal-body">
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<center><h4 class="modal-title" id="myModalLabel">Hapus Riwayat Berobat?</h4></center>
+														<center><h4 class="modal-title" id="gridSystemModalLabel">Hapus Riwayat Berobat? </h4></center>
 														</div>
 														<div class="modal-footer">
 															<form action="removeRiwayat.php" method="POST">
 																<input name="id_pasien" type="hidden" value="<?php echo $tpa_id?>"></input>
-																<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+																<input name="mep_id" type="hidden" value="<?php echo $mep_id?>"></input>
+																<button type="submit" class="btn btn-primary">Ok</button>
 															</form>
 															<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 														</div>
