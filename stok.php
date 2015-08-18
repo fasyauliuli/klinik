@@ -168,14 +168,15 @@
 																	<input value="<?php echo $row['mob_satuan']?>" name="satuan" type="text" class="form-control" id="satuan" placeholder="Satuan" required>
 																  </div>
 																  <input type="hidden" value="<?php echo $row['mob_id']?>" name="id">
-																</form>
+																
 															</div>
 														  </div>
 														</div>
 													  </div>
 													  <div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														<button type="submit" form="editStock" class="btn btn-primary">Save changes</button>
+														<button type="submit" class="btn btn-primary">Save changes</button>
+														</form>
 													  </div>
 													</div><!-- /.modal-content -->
 												  </div><!-- /.modal-dialog -->

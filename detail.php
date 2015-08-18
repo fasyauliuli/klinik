@@ -43,7 +43,6 @@
 
 	<link href="css/modal dialog.css" rel="stylesheet">
 	
-	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -367,8 +366,8 @@
 							</div>
 							
 							<!-- Modal -->
-									<div class="modal fade" id="tambahT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-									  <div class="modal-dialog" role="document">
+									<div class="modal fade" id="tambahT" role="dialog" aria-labelledby="myModalLabel">
+									  <div class="modal-dialog modal-sm" role="document">
 										<div class="modal-content">
 											<form action="addTrans.php" method="POST">
 											  <div class="modal-header">
@@ -377,16 +376,16 @@
 											  </div>
 											  
 											  <div class="modal-body">
-												<div class="row">
-													<div class="col-sm-6 col-sm-offset-3">
+												<div class="row" style="margin-left: -10px; margin-right: 0px">
+													<div class="col-lg-12">
 														<label>Masukkan Keterangan Sakit</label>
 															<div class="multi-field-wrapper">
 															  <div class="multi-fields">
 																<div class="multi-field row">
-																	<div class="col-sm-8">
+																	<div class="col-xs-9">
 																		<input class="form-control" type="text" name="ketSakit[]" id="ketSakit" required>
 																	</div>
-																	<button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
+																	<button type="button" class="col-xs-3 remove-field btn btn-danger btn-sm">Hapus</button>
 																</div>
 															  </div>
 															  <button type="button" class="add-field btn btn-primary btn-sm">Tambah</button>
@@ -401,8 +400,8 @@
 											</div>
 											  
 											<div class="modal-body">
-												<div class="row">
-													<div class="col-sm-8 col-md-offset-3">
+												<div class="row" style="margin-left: -10px; margin-right: 0px">
+													<div class="col-sm-12">
 														<div class="row">
 															<div class="col-sm-5">
 																<label>Nama Obat</label>
@@ -417,8 +416,8 @@
 														<div class="multi-field-wrapper">
 														  <div class="multi-fields">
 															<div class="multi-field row">
-																<div class="col-xs-4">
-																	<select class="form-control sel2" name="obat[]">
+																<div class="col-sm-5">
+																	<select id="n_obat" class="form-control sel2" name="obat[]">
 																		<?php
 																		$query = mysql_query("select * from m_obat");
 																		while($row = mysql_fetch_array($query)){
@@ -428,11 +427,11 @@
 																	</select>
 																</div>
 																
-																<div class="col-xs-4">
-																	<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" required></input>
+																<div class="col-sm-4">
+																	<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" min="0" required></input>
 																</div>
 																
-																<button type="button" class="remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>
+																<button type="button" class="col-sm-3 remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>
 																
 															</div>
 														  </div>
@@ -481,6 +480,21 @@
 	<!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
 	
+	<!-- Select2 -->
+    <script src="js/plugins/select2/select2.full.min.js"></script>
+	
+	<script>
+	$(document).ready(function() {
+	  $(".sel2").select2();
+	});
+	
+	$.fn.select2.amd.require(
+    ["select2/utils", "select2/selection/single", "select2/selection/placeholder"],
+    function (Utils, SingleSelection, Placeholder) {
+	  var CustomSelectionAdapter = Utils.Decorate(SingleSelection, Placeholder);
+	});
+	</script>
+	
 	<script>
 	$('.multi-field-wrapper').each(function() {
 		var $wrapper = $('.multi-fields', this);
@@ -493,17 +507,6 @@
 		});
 	});
 	</script>
-	
-	<script>
-	$(document).ready(function() {
-	  $(".sel2").select2();
-	});
-	</script>
-	
-	
-	<!-- Select2 -->
-    <script src="js/plugins/select2/select2.full.min.js"></script>
-	
 
 </body>
 
