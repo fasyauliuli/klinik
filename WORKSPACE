@@ -1035,6 +1035,10 @@
                 <File name="dist\js\sb-admin-2.js" />
             </Folder>
         </Folder>
+        <Folder name="doc">
+            <File name="doc\LAPORAN BULANAN.pdf" />
+            <File name="doc\LAPORAN HARIAN.pdf" />
+        </Folder>
         <Folder name="font-awesome">
             <Folder name="css">
                 <File name="font-awesome\css\font-awesome.css" />
@@ -1112,6 +1116,7 @@
         <File name=".gitattributes" />
         <File name=".gitignore" />
         <File name="addStock.php" />
+        <File name="addTrans.php" />
         <File name="dbcon.php" />
         <File name="detail.php" />
         <File name="editStock.php" />
@@ -1119,9 +1124,9 @@
         <File name="LICENSE" />
         <File name="pasien.php" />
         <File name="README.md" />
+        <File name="removeRiwayat.php" />
         <File name="removeStock.php" />
         <File name="stok.php" />
         <File name="transaksi.php" />
-        <File name="addTrans.php" />
     </Project>
 </NotepadPlus>
