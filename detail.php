@@ -29,7 +29,10 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="css/plugins/select2.min.css">
+	
+	<!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
@@ -40,9 +43,7 @@
 
 	<link href="css/modal dialog.css" rel="stylesheet">
 	
-    <!-- Select2 -->
-    <link rel="stylesheet" href="css/plugins/select2.min.css">
-    
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -348,7 +349,7 @@
 																	<form action="removeRiwayat.php" method="POST">
 																		<input name="id_pasien" type="hidden" value="<?php echo $tpa_id?>"></input>
 																		<input name="mep_id" type="hidden" value="<?php echo $mep_id?>"></input>
-																		<button type="submit" class="btn btn-primary">Ok</button>
+																		<button type="submit" class="btn btn-primary pull-right">Ok</button>
 																	</form>
 																	<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 																</div>
@@ -369,7 +370,7 @@
 									<div class="modal fade" id="tambahT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 									  <div class="modal-dialog" role="document">
 										<div class="modal-content">
-											<form action="addTrans.php" method="POST" class="form-inline">
+											<form action="addTrans.php" method="POST">
 											  <div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 												<center><h3 class="modal-title" id="myModalLabel">Keterangan Sakit</h3></center>
@@ -377,12 +378,14 @@
 											  
 											  <div class="modal-body">
 												<div class="row">
-													<div class="col-sm-6 col-sm-offset-2">
+													<div class="col-sm-6 col-sm-offset-3">
 														<label>Masukkan Keterangan Sakit</label>
 															<div class="multi-field-wrapper">
 															  <div class="multi-fields">
-																<div class="multi-field">
-																	<input type="text" name="ketSakit[]" id="ketSakit" required>
+																<div class="multi-field row">
+																	<div class="col-sm-8">
+																		<input class="form-control" type="text" name="ketSakit[]" id="ketSakit" required>
+																	</div>
 																	<button type="button" class="remove-field btn btn-danger btn-sm">Hapus</button>
 																</div>
 															  </div>
@@ -395,11 +398,11 @@
 											
 											<div class="modal-header">
 												<center><h3 class="modal-title" id="myModalLabel">Obat</h3></center>
-											  </div>
+											</div>
 											  
-											  <div class="modal-body">
+											<div class="modal-body">
 												<div class="row">
-													<div class="col-sm-8">
+													<div class="col-sm-8 col-md-offset-3">
 														<div class="row">
 															<div class="col-sm-5">
 																<label>Nama Obat</label>
@@ -409,47 +412,41 @@
 															</div>
 														</div>
 														
+														
+														
 														<div class="multi-field-wrapper">
 														  <div class="multi-fields">
-															<div class="multi-field">
-																<div class="row">
-																	<div class="form-group col-sm-4">
-																		<select class="form-control select2">
-																			<?php
-																			$query = mysql_query("select * from m_obat");
-																			while($row = mysql_fetch_array($query)){
-																				?>
-																				<option value="<?php echo $row['mob_nama_obat']?>"><?php echo $row['mob_nama_obat']?></option>
-																			<?php }?>
-																		</select>
-																	</div>
-																	<div class="form-group col-sm-4">
-																		<label class="sr-only" for="jumlahObat">Jumlah</label>
-																		<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" required></input>
-																	</div>
-																	<div class="form-group col-sm-4">
-																		<button type="button" class="remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>																	
-																	</div>
+															<div class="multi-field row">
+																<div class="col-xs-4">
+																	<select class="form-control sel2" name="obat[]">
+																		<?php
+																		$query = mysql_query("select * from m_obat");
+																		while($row = mysql_fetch_array($query)){
+																			?>
+																			<option value="<?php echo $row['mob_nama_obat']?>"><?php echo $row['mob_nama_obat']?></option>
+																		<?php }?>
+																	</select>
 																</div>
+																
+																<div class="col-xs-4">
+																	<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" required></input>
+																</div>
+																
+																<button type="button" class="remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>
+																
 															</div>
 														  </div>
 														  <button type="button" class="add-field btn btn-primary btn-sm">Tambah</button>
-														
 														</div>
 													</div>
 												</div>
-											  </div>
+											</div>
+											
 											  <div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 														<input type="hidden" name="me_id" value="<?php echo $me_id?>"></input>
-														<?php $p = mysql_query("select * from tpa_pasien");
-															  $s = mysql_fetch_array($p)
-														?>
-														<input type="hidden" name="tgl" value="<?php echo $s['tpa_tanggal_berobat']?>"></input>
-														<input type="hidden" name="idPasienK" value="<?php echo $s['tpa_id']?>"></input>
-														<input type="hidden" name="idObat" value="<?php echo $br['tob_mob_id']?>"></input>
-														<input type="hidden" name="idPasienT" value="<?php echo $s['tpa_id']?>"></input>
 														<input type="hidden" name="mep_id" value="<?php echo $mep_id?>"></input>
+														
 														<button type="submit" class="btn btn-primary" >Submit</button>
 											  </div>
 											</form>
@@ -477,23 +474,12 @@
     
 	<!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-	<!-- Select2 -->
-    <script src="js/plugins/select2/select2.full.min.js"></script>
     
     <!-- Metis Menu Plugin JavaScript -->
     <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 	<!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
-	
-	
-	<script>
-      $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-      });
-    </script>
 	
 	<script>
 	$('.multi-field-wrapper').each(function() {
@@ -507,6 +493,16 @@
 		});
 	});
 	</script>
+	
+	<script>
+	$(document).ready(function() {
+	  $(".sel2").select2();
+	});
+	</script>
+	
+	
+	<!-- Select2 -->
+    <script src="js/plugins/select2/select2.full.min.js"></script>
 	
 
 </body>
