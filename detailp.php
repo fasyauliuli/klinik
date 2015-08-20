@@ -2,10 +2,10 @@
 <html lang="en">
 <?php
 	include 'dbcon.php';
-		
-	$query = mysql_query("select * from m_pengunjung");
+	
+	$mp_id = $_GET['id'];
+	$query = mysql_query("select * from m_pengunjung where mp_id = '$mp_id'");
 	$row = mysql_fetch_array($query);
-	$mp_id = $row['mp_id'];
 	
 	$qr = mysql_query("select * from tpa_pasien where tpa_mp_id = '$mp_id' order by tpa_tanggal_berobat");
 ?>
@@ -118,7 +118,7 @@
 											<p>:</p>
 										</div>
 										<div class="col-sm-6">
-											<p><?php echo $row['mp_nama'?></p>
+											<p><?php echo $row['mp_nama_lengkap']?></p>
 										</div>
 									</div>
 									<div class="row">
@@ -129,7 +129,7 @@
 											<p>:</p>
 										</div>
 										<div class="col-sm-6">
-											<p><?php echo $r['mp_pekerjaan']?></p>
+											<p><?php echo $row['mp_pekerjaan']?></p>
 										</div>
 									</div>
 									<div class="row">
@@ -403,7 +403,6 @@
 											
 											  <div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														<input type="hidden" name="me_id" value="<?php echo $me_id?>"></input>
 														<input type="hidden" name="mp_id" value="<?php echo $mp_id?>"></input>
 														
 														<button type="submit" class="btn btn-primary" >Submit</button>

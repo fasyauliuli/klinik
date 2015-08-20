@@ -139,6 +139,29 @@
 												<p><?php echo $r['me_first_name'],' '.$r['me_last_name']?></p>
 											</div>
 											<div class="col-sm-6">
+												<p>
+												<?php echo $r['me_first_name'],' '.$r['me_last_name']?>
+												<?php echo $row['tpa_tanggal_berobat']?></p>
+											</div>
+											</label>
+										</a>
+										<?php
+											}
+										?>
+										
+										<?php
+											while($row = mysql_fetch_array($query))
+											{
+												$mp_id = $row['tpa_mp_id'];
+												$q = mysql_query("select * from m_pengunjung where mp_id='$mp_id'");
+												$r = mysql_fetch_array($q);
+										?>
+										<a href="detail.php?id=<?php echo $mp_id?>">
+											<label>
+											<div class="col-sm-6">
+												<p><?php echo $r['mp_nama_lengkap']?></p>
+											</div>
+											<div class="col-sm-6">
 												<p><?php echo $row['tpa_tanggal_berobat']?></p>
 											</div>
 											</label>

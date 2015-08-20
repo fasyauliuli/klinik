@@ -121,7 +121,36 @@
 										</thead>
 										<tbody>
 											<?php
-											$i = 0;
+											$j = 0;
+											while($row = mysql_fetch_array($q))
+											{
+												$j++;
+											?>
+											
+											<tr>
+												<td class="text-center"><?php echo $j?></td>
+												<td><?php echo $row['mp_nama_lengkap']?></td>
+												<td class="text-center"><?php echo $row['mp_tanggal_lahir']?></td>
+												<td><?php echo $row['mp_pekerjaan']?></td>
+												<?php
+													$mp_id = $row['mp_id'];
+													$q1 = mysql_query("select * from tpa_pasien where tpa_mp_id='$mp_id'");
+													$r1 = mysql_num_rows($q1);
+												?>
+												<td class="text-center"><?php echo $r1?></td>
+												<td>
+												<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+													<a href="detailp.php?id=<?php echo $mp_id?>">
+														<center>
+															<button type="button" class="btn btn-primary btn-md">Detail</button>
+														</center>
+													</a>
+												</td>
+											</tr>
+											<?php } ?>
+										
+											<?php
+											$i = $j;
 											while($row = mysql_fetch_array($query))
 											{
 												$i++;
@@ -152,38 +181,10 @@
 													</a>
 												</td>
 											</tr>
-											<?php }
-											
-											
-											
-											$j = $i;
-											while($row = mysql_fetch_array($q))
-											{
-												$j++;
-												echo $j;
-											?>
-											
-											<tr>
-												<td class="text-center"><?php echo $j?></td>
-												<td><?php echo $row['mp_nama_lengkap']?></td>
-												<td class="text-center"><?php echo $row['mp_tanggal_lahir']?></td>
-												<td><?php echo $r['mp_pekerjaan']?></td>
-												<?php
-													$mp_id = $row['mp_id'];
-													$q1 = mysql_query("select * from tpa_pasien where tpa_mp_id='$mp_id'");
-													$r1 = mysql_num_rows($q1);
-												?>
-												<td class="text-center"><?php echo $r1?></td>
-												<td>
-												<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-													<a href="detailp.php?id=<?php echo $mp_id?>">
-														<center>
-															<button type="button" class="btn btn-primary btn-md">Detail</button>
-														</center>
-													</a>
-												</td>
-											</tr>
 											<?php } ?>
+											
+											
+											
 										</tbody>
 									</table>
 								</div>

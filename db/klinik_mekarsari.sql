@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2015 at 01:04 AM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Aug 20, 2015 at 10:45 AM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `klinik_mekarsari`
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `m_employee` (
 --
 
 INSERT INTO `m_employee` (`me_id`, `me_md_id`, `me_mep_id`, `me_nik`, `me_rfid`, `me_barcode`, `me_first_name`, `me_middle_name`, `me_last_name`, `me_dob`, `me_gender`, `me_hp`, `me_email`, `me_address`, `me_working_since`, `me_status_kontrak`, `me_status_keaktifan`, `me_kendaraan`, `me_foto`) VALUES
-(1, 10, '1', '123', '', '', 'Mas', '', 'Ganteng', '2015-05-20', '0', '08567167648', 'ones006@gmail.com', 'adasdasd', '2015-05-20', 0, '', '', ''),
+(1, 10, '1', '123', '', '', 'Mba', '', 'Wulan', '2015-05-20', '0', '08567167648', 'ones006@gmail.com', 'adasdasd', '2015-05-20', 0, '', '', ''),
 (2, 25, '2', '1267166261', '', '', 'Roso', '', 'Sasongko', '2015-06-07', '1', '081298419718', 'roso.sasongko@gmail.com', 'Jl. DI. Panjaitan No. 128 Purwokerto', '2015-06-07', 0, '', '', '');
 
 -- --------------------------------------------------------
@@ -95,11 +95,34 @@ CREATE TABLE IF NOT EXISTS `m_obat` (
 --
 
 INSERT INTO `m_obat` (`mob_id`, `mob_nama_obat`, `mob_tanggal_beli`, `mob_jumlah`, `mob_satuan`) VALUES
-(1, 'promag', '2015-08-05', 10, 'strip'),
+(1, 'promag', '2015-08-05', 8, 'strip'),
 (2, 'OBH', '2015-07-07', 20, 'botol'),
 (3, 'actifed', '2015-08-07', 15, 'botol'),
 (4, 'vitacimin', '2015-08-19', 1, 'kardus'),
 (5, 'albothyl', '2015-08-12', 18, 'botol');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_pengunjung`
+--
+
+CREATE TABLE IF NOT EXISTS `m_pengunjung` (
+  `mp_id` int(11) NOT NULL,
+  `mp_nama_lengkap` text NOT NULL,
+  `mp_alamat` text NOT NULL,
+  `mp_pekerjaan` text NOT NULL,
+  `mp_no_hp` int(11) NOT NULL,
+  `mp_tanggal_lahir` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `m_pengunjung`
+--
+
+INSERT INTO `m_pengunjung` (`mp_id`, `mp_nama_lengkap`, `mp_alamat`, `mp_pekerjaan`, `mp_no_hp`, `mp_tanggal_lahir`) VALUES
+(1, 'hdjkasd', 'kasddhj', 'skjadhk', 0, '0000-00-00'),
+(2, 'uli nyonyoy', 'bandung', 'mahasiswa', 2147483647, '2015-08-13');
 
 -- --------------------------------------------------------
 
@@ -125,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `tks_keterangan_sakit` (
   `tks_id` int(11) NOT NULL,
   `tks_tpa_id` int(11) NOT NULL,
   `tks_nama_penyakit` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tks_keterangan_sakit`
@@ -145,7 +168,8 @@ INSERT INTO `tks_keterangan_sakit` (`tks_id`, `tks_tpa_id`, `tks_nama_penyakit`)
 (11, 8, 'sulit tidur'),
 (12, 8, 'mimpi buruk'),
 (13, 8, 'konsentrasi buruk'),
-(14, 9, 'maag');
+(14, 9, 'maag'),
+(17, 126, 'tes');
 
 -- --------------------------------------------------------
 
@@ -158,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `tob_transaksi_obat` (
   `tob_mob_id` int(11) NOT NULL,
   `tob_tpa_id` int(11) NOT NULL,
   `tob_mob_jumlah` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tob_transaksi_obat`
@@ -174,7 +198,8 @@ INSERT INTO `tob_transaksi_obat` (`tob_id`, `tob_mob_id`, `tob_tpa_id`, `tob_mob
 (7, 5, 6, 1),
 (8, 3, 7, 1),
 (9, 3, 8, 1),
-(10, 1, 9, 1);
+(10, 1, 9, 1),
+(13, 1, 126, 2);
 
 -- --------------------------------------------------------
 
@@ -185,21 +210,24 @@ INSERT INTO `tob_transaksi_obat` (`tob_id`, `tob_mob_id`, `tob_tpa_id`, `tob_mob
 CREATE TABLE IF NOT EXISTS `tpa_pasien` (
   `tpa_id` int(11) NOT NULL,
   `tpa_tanggal_berobat` date NOT NULL,
-  `tpa_me_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+  `tpa_me_id` int(11) NOT NULL,
+  `tpa_mp_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tpa_pasien`
 --
 
-INSERT INTO `tpa_pasien` (`tpa_id`, `tpa_tanggal_berobat`, `tpa_me_id`) VALUES
-(3, '2015-08-15', 1),
-(4, '2015-08-14', 1),
-(5, '2015-08-16', 1),
-(6, '2015-08-18', 1),
-(7, '2015-08-16', 2),
-(8, '2015-08-07', 2),
-(9, '2015-08-18', 2);
+INSERT INTO `tpa_pasien` (`tpa_id`, `tpa_tanggal_berobat`, `tpa_me_id`, `tpa_mp_id`) VALUES
+(3, '2015-08-15', 1, 0),
+(4, '2015-08-14', 1, 0),
+(5, '2015-08-16', 1, 0),
+(6, '2015-08-18', 1, 0),
+(7, '2015-08-16', 2, 0),
+(8, '2015-08-07', 2, 0),
+(9, '2015-08-18', 2, 0),
+(123, '2015-08-19', 0, 1),
+(126, '2015-08-20', 0, 2);
 
 --
 -- Indexes for dumped tables
@@ -222,6 +250,12 @@ ALTER TABLE `m_employee_positions`
 --
 ALTER TABLE `m_obat`
   ADD PRIMARY KEY (`mob_id`);
+
+--
+-- Indexes for table `m_pengunjung`
+--
+ALTER TABLE `m_pengunjung`
+  ADD PRIMARY KEY (`mp_id`);
 
 --
 -- Indexes for table `m_potongan`
@@ -257,6 +291,11 @@ ALTER TABLE `tpa_pasien`
 ALTER TABLE `m_obat`
   MODIFY `mob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `m_pengunjung`
+--
+ALTER TABLE `m_pengunjung`
+  MODIFY `mp_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `m_potongan`
 --
 ALTER TABLE `m_potongan`
@@ -265,17 +304,17 @@ ALTER TABLE `m_potongan`
 -- AUTO_INCREMENT for table `tks_keterangan_sakit`
 --
 ALTER TABLE `tks_keterangan_sakit`
-  MODIFY `tks_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `tks_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tob_transaksi_obat`
 --
 ALTER TABLE `tob_transaksi_obat`
-  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `tob_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tpa_pasien`
 --
 ALTER TABLE `tpa_pasien`
-  MODIFY `tpa_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `tpa_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=127;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
