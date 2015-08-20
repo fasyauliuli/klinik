@@ -71,29 +71,30 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-home"></i> Dashboard</a>
                     </li>
                     <li class="active">
-                        <a href="pasien.php"><i class="fa fa-fw fa-bar-chart-o"></i> Pasien</a>
+                        <a href="pasien.php"><i class="fa fa-fw fa-user"></i> Pasien</a>
                     </li>
                     <li>
-                        <a href="transaksi.php"><i class="fa fa-fw fa-table"></i> Transaksi Obat</a>
+                        <a href="transaksi.php"><i class="fa fa-fw fa-money"></i> Transaksi Obat</a>
                     </li>
                     <li>
-                        <a href="stok.php"><i class="fa fa-fw fa-edit"></i> Stok Obat</a>
+                        <a href="stok.php"><i class="fa fa-fw fa-medkit"></i> Stok Obat</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Laporan Bulanan</a>
+                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
                             </li>
                             <li>
-                                <a href="#">Laporan Harian</a>
+                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
-				</ul>
+                </ul>
+			
 			</div>
             <!-- /.navbar-collapse -->
         </nav>
@@ -416,12 +417,12 @@
 														  <div class="multi-fields">
 															<div class="multi-field row">
 																<div class="col-sm-5">
-																	<select id="n_obat" class="form-control sel2" name="obat[]">
+																	<select id="n_obat" class="form-control" name="obat[]">
 																		<?php
 																		$query = mysql_query("select * from m_obat");
 																		while($row = mysql_fetch_array($query)){
 																			?>
-																			<option value="<?php echo $row['mob_nama_obat']?>"><?php echo $row['mob_nama_obat']?></option>
+																			<option value="<?php echo $row['mob_id']?>"><?php echo $row['mob_nama_obat']?> (Sisa <?php echo $row['mob_jumlah'],' ',$row['mob_satuan']?>)</option>
 																		<?php }?>
 																	</select>
 																</div>
@@ -431,7 +432,6 @@
 																</div>
 																
 																<button type="button" class="col-sm-3 remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>
-																
 															</div>
 														  </div>
 														  <button type="button" class="add-field btn btn-primary btn-sm">Tambah</button>
@@ -485,12 +485,6 @@
 	<script>
 	$(document).ready(function() {
 	  $(".sel2").select2();
-	});
-	
-	$.fn.select2.amd.require(
-    ["select2/utils", "select2/selection/single", "select2/selection/placeholder"],
-    function (Utils, SingleSelection, Placeholder) {
-	  var CustomSelectionAdapter = Utils.Decorate(SingleSelection, Placeholder);
 	});
 	</script>
 	
