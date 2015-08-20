@@ -4,6 +4,8 @@
 	include 'dbcon.php';
 	
 	$query = mysql_query("select * from m_employee");
+	$q = mysql_query("select * from m_pengunjung");
+	$r = mysql_num_rows($q);
 ?>
 <head>
 
@@ -110,7 +112,6 @@
 										<thead>
 											<tr>
 												<th>No</th>
-												<th>ID Pegawai</th>
 												<th>Nama</th>
 												<th>Tanggal Lahir</th>
 												<th>Pekerjaan/Bagian</th>
@@ -120,16 +121,15 @@
 										</thead>
 										<tbody>
 											<?php
-											
 											$i = 0;
 											while($row = mysql_fetch_array($query))
 											{
 												$i++;
+											
 											?>
 											
 											<tr>
 												<td class="text-center"><?php echo $i?></td>
-												<td><?php echo $row['me_nik']?></td>
 												<td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
 												<td class="text-center"><?php echo $row['me_dob']?></td>
 												<?php
@@ -152,6 +152,37 @@
 													</a>
 												</td>
 											</tr>
+											<?php }
+											
+											
+											
+											$j = $i;
+											while($row = mysql_fetch_array($q))
+											{
+												$j++;
+												echo $j;
+											?>
+											
+											<tr>
+												<td class="text-center"><?php echo $j?></td>
+												<td><?php echo $row['mp_nama_lengkap']?></td>
+												<td class="text-center"><?php echo $row['mp_tanggal_lahir']?></td>
+												<td><?php echo $r['mp_pekerjaan']?></td>
+												<?php
+													$mp_id = $row['mp_id'];
+													$q1 = mysql_query("select * from tpa_pasien where tpa_mp_id='$mp_id'");
+													$r1 = mysql_num_rows($q1);
+												?>
+												<td class="text-center"><?php echo $r1?></td>
+												<td>
+												<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+													<a href="detailp.php?id=<?php echo $mp_id?>">
+														<center>
+															<button type="button" class="btn btn-primary btn-md">Detail</button>
+														</center>
+													</a>
+												</td>
+											</tr>
 											<?php } ?>
 										</tbody>
 									</table>
@@ -165,6 +196,58 @@
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
+				
+				<div class="text-center">
+					<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#tambah_pasien">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah Pasien Baru
+					</button>
+				</div>
+				
+				<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="tambah_pasien">
+				  <div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="gridSystemModalLabel">Form Tambah Data Pasien</h4>
+					  </div>
+					  <div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-lg-12">
+									<form id="addPasien" method="POST" action="addPasien.php">
+									  <div class="form-group">
+										<label for="nama">Nama</label>
+										<input name="nama" type="text" class="form-control" id="nama" placeholder="Nama" required>
+									  </div>
+									  <div class="form-group">
+										<label for="pekerjaan">Pekerjaan/Bagian</label>
+										<input name="pekerjaan" type="text" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
+									  </div>
+									  <div class="form-group">
+										<label for="tanggalLahir">Tanggal Lahir</label>
+										<input name="tanggalLahir" type="date" class="form-control" id="tanggalLahir" placeholder="Tanggal Lahir" required>
+									  </div>
+									  <div class="form-group">
+										<label for="no_HP">Nomor HP</label>
+										<input name="no_HP" type="text" class="form-control" id="no_HP" placeholder="Nomor HP" required>
+									  </div>
+									  <div class="form-group">
+										<label for="alamat">Alamat</label>
+										<input name="alamat" type="text" class="form-control" id="alamat" placeholder="Alamat" required>
+									  </div>
+									  <button type="reset" class="btn btn-danger">Reset</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					  </div>
+					  <div class="modal-footer">
+						<button type="submit" form="addPasien" class="btn btn-primary">Submit</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"\>Cancel</button>
+					  </div>
+					</div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 			</div>
         </div>
         <!-- /#page-wrapper -->
