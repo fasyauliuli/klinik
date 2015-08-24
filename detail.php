@@ -86,10 +86,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
-                            </li>
-                            <li>
-                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
+                                <a href="laporan/Laporan Harian.php">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
@@ -135,7 +132,7 @@
 											<p>:</p>
 										</div>
 										<div class="col-sm-6">
-											<p><?php echo $row['me_first_name'],' ',$row['me_last_name']?></p>
+											<p><?php echo $row['me_first_name'],' ',$row['me_middle_name'],' ',$row['me_last_name']?></p>
 										</div>
 									</div>
 									<div class="row">
@@ -428,7 +425,7 @@
 																</div>
 																
 																<div class="col-sm-4">
-																	<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" min="0" required></input>
+																	<input class="form-control" type="number" name="jumlah[]" id="jumlahObat" min="0" max="50" required></input>
 																</div>
 																
 																<button type="button" class="col-sm-3 remove-field btn btn-danger btn-sm" value="Hapus">Hapus</input>

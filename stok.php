@@ -79,10 +79,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
-                            </li>
-                            <li>
-                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
+                                <a href="laporan/Laporan Harian.php">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
@@ -162,7 +159,7 @@
 																  </div>
 																  <div class="form-group">
 																	<label for="tambahStok">Penambahan Stok</label>
-																	<input value="0" name="jumlah" type="number" class="form-control" id="tambahStok" placeholder="Jumlah" required>
+																	<input value="0" name="jumlah" type="number" class="form-control" id="tambahStok" placeholder="Jumlah" min="0" required>
 																  </div>
 																  <div class="form-group">
 																	<label for="satuan">Satuan</label>
@@ -249,7 +246,7 @@
 													  </div>
 													  <div class="form-group">
 														<label for="jumlahStok">Jumlah Stok</label>
-														<input name="jumlah" type="number" class="form-control" id="jumlahStok" placeholder="Jumlah" required>
+														<input name="jumlah" type="number" class="form-control" id="jumlahStok" placeholder="Jumlah" min="0" required>
 													  </div>
 													  <div class="form-group">
 														<label for="satuan">Satuan</label>

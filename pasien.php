@@ -81,10 +81,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
-                            </li>
-                            <li>
-                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
+                                <a href="laporan/Laporan Harian.php">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
@@ -159,7 +156,7 @@
 											
 											<tr>
 												<td class="text-center"><?php echo $i?></td>
-												<td><?php echo $row['me_first_name'],' ',$row['me_last_name']?></td>
+												<td><?php echo $row['me_first_name'],' ',$row['me_middle_name'],' ',$row['me_last_name']?></td>
 												<td class="text-center"><?php echo $row['me_dob']?></td>
 												<?php
 													$mep_id = $row['me_mep_id'];
@@ -219,6 +216,10 @@
 									  <div class="form-group">
 										<label for="nama">Nama</label>
 										<input name="nama" type="text" class="form-control" id="nama" placeholder="Nama" required>
+									  </div>
+									  <div class="form-group">
+										<label for="gender">Jenis Kelamin</label>
+										<input name="gender" type="text" class="form-control" id="gender" placeholder="Jenis Kelamin" required>
 									  </div>
 									  <div class="form-group">
 										<label for="pekerjaan">Pekerjaan/Bagian</label>

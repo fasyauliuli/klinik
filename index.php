@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 	include 'dbcon.php';
-	$query = mysql_query("select * from tpa_pasien where tpa_tanggal_berobat >= CURDATE()");
+	$query = mysql_query("select * from tpa_pasien where tpa_tanggal_berobat = CURDATE()");
 	$cnt = mysql_num_rows($query);
 ?>
 <head>
@@ -71,12 +71,9 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
+                                <a href="laporan/Laporan Harian.php">Laporan Harian</a>
                             </li>
-                            <li>
-                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
-                            </li>
-                        </ul>
+						</ul>
                     </li>
                 </ul>
             </div>
@@ -89,7 +86,7 @@
 
                 <!-- Page Heading -->
                 <div class="row">
-					<div class="col-lg-3">
+					<div class="col-lg-4">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
@@ -136,12 +133,10 @@
 										<a href="detail.php?id=<?php echo $mep_id?>">
 											<label>
 											<div class="col-sm-6">
-												<p><?php echo $r['me_first_name'],' '.$r['me_last_name']?></p>
+												<p><?php echo $r['me_first_name'],' ',$r['me_middle_name'],' ',$r['me_last_name']?></p>
 											</div>
 											<div class="col-sm-6">
-												<p>
-												<?php echo $r['me_first_name'],' '.$r['me_last_name']?>
-												<?php echo $row['tpa_tanggal_berobat']?></p>
+												<p><?php echo $row['tpa_tanggal_berobat']?></p>
 											</div>
 											</label>
 										</a>
@@ -156,7 +151,7 @@
 												$q = mysql_query("select * from m_pengunjung where mp_id='$mp_id'");
 												$r = mysql_fetch_array($q);
 										?>
-										<a href="detail.php?id=<?php echo $mp_id?>">
+										<a href="detailp.php?id=<?php echo $mp_id?>">
 											<label>
 											<div class="col-sm-6">
 												<p><?php echo $r['mp_nama_lengkap']?></p>

@@ -79,10 +79,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file-pdf-o"></i> Laporan <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="doc/LAPORAN BULANAN.pdf">Laporan Bulanan</a>
-                            </li>
-                            <li>
-                                <a href="doc/LAPORAN HARIAN.pdf">Laporan Harian</a>
+                                <a href="laporan/Laporan Harian.php">Laporan Harian</a>
                             </li>
                         </ul>
                     </li>
