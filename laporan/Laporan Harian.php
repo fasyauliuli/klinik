@@ -34,6 +34,7 @@ $no = 0;
 while($row = mysql_fetch_array($query))
 	{
 		$me_id = $row['tpa_me_id'];
+		if($me_id){
 		$q = mysql_query("select * from m_employee where me_id='$me_id'");
 		$r = mysql_fetch_array($q);
 		$birth = $r['me_dob'];
@@ -90,11 +91,8 @@ while($row = mysql_fetch_array($query))
 		$pdf->Cell(38,6,' ',1,0,'L');
 		
 		
-	}
-
-while($row = mysql_fetch_array($query))
-	{
-		$mp_id = $row['tpa_me_id'];
+	}else{
+		$mp_id = $row['tpa_mp_id'];
 		$q = mysql_query("select * from m_pengunjung where mp_id='$mp_id'");
 		$r = mysql_fetch_array($q);
 		$birth = $r['mp_tanggal_lahir'];
@@ -132,7 +130,7 @@ while($row = mysql_fetch_array($query))
 		$no++;
 		$pdf->Ln(6);
 		$pdf->SetFont('Times');
-		$pdf->Cell(8,6,$i. ".",1,0,'C');
+		$pdf->Cell(8,6,$no. ".",1,0,'C');
 		$pdf->Cell(20,6,$row['tpa_tanggal_berobat'],1,0,'L');
 		$pdf->Cell(33,6,$r['mp_nama_lengkap'] ,1,0,'L');
 		$pdf->Cell(30,6,$umur,1,0,'L');
@@ -145,6 +143,7 @@ while($row = mysql_fetch_array($query))
 		
 		
 	}
+}
 
 $pdf->Output();
 ?>
