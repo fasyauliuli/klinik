@@ -114,59 +114,50 @@
 									<h4 class="modal-title" id="gridSystemModalLabel">Pasien Hari Ini</h4>
 								  </div>
 								  <div class="modal-body">
-									<div class="container-fluid">
-									  <div class="row">
-									  	<div class="col-sm-6">
-											<label> Nama </label>
-										</div>
-									  	<div class="col-sm-6">
-											<label> Jam Berobat </label>
-										</div>
+									<table class="table">
+										<thead>
+											<tr>
+												<td>Nama</td>
+												<td>Detail</td>
+											</tr>
+										</thead>
+										<tbody>
 										<?php
 											while($row = mysql_fetch_array($query))
 											{
 												$me_id = $row['tpa_me_id'];
+												if($me_id){
 												$q = mysql_query("select * from m_employee where me_id='$me_id'");
 												$r = mysql_fetch_array($q);
 												$mep_id = $r['me_mep_id'];
 										?>
-										<a href="detail.php?id=<?php echo $mep_id?>">
-											<label>
-											<div class="col-sm-6">
-												<p><?php echo $r['me_first_name'],' ',$r['me_middle_name'],' ',$r['me_last_name']?></p>
-											</div>
-											<div class="col-sm-6">
-												<p><?php echo $row['tpa_tanggal_berobat']?></p>
-											</div>
-											</label>
-										</a>
+										
+											<tr>
+												<td><?php echo $r['me_first_name'],' ',$r['me_middle_name'],' ',$r['me_last_name']?></td>
+												<td><a class="btn btn-primary" href="detail.php?id=<?php echo $mep_id?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+											</tr>
+											
 										<?php
-											}
+											} else{
 										?>
 										
 										<?php
-											while($row = mysql_fetch_array($query))
-											{
 												$mp_id = $row['tpa_mp_id'];
 												$q = mysql_query("select * from m_pengunjung where mp_id='$mp_id'");
 												$r = mysql_fetch_array($q);
 										?>
-										<a href="detailp.php?id=<?php echo $mp_id?>">
-											<label>
-											<div class="col-sm-6">
-												<p><?php echo $r['mp_nama_lengkap']?></p>
-											</div>
-											<div class="col-sm-6">
-												<p><?php echo $row['tpa_tanggal_berobat']?></p>
-											</div>
-											</label>
-										</a>
+											<tr>
+												<td><?php echo $r['mp_nama_lengkap']?></td>
+												<td><a class="btn btn-primary" href="detailp.php?id=<?php echo $mp_id?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+											</tr>
 										<?php
 											}
+										}
 										?>
-									  </div>
-									</div>
-								  </div>
+										</tbody>
+									</table>
+								</div>
+								<!-- modal-body -->
 								  <div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								  </div>
