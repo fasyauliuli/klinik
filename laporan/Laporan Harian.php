@@ -1,10 +1,8 @@
 <?php
-
-include "fpdf.php";
 include "../dbcon.php";
 include "wordwrap.php";
 
-$pdf = new FPDF('L','mm',array(215.9,330.2));
+$pdf = new PDF('L','mm',array(215.9,330.2));
 $pdf->AddPage();
 
 $pdf->SetFont('Times', 'B', 12);
