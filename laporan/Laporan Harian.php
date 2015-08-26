@@ -2,6 +2,7 @@
 
 include "fpdf.php";
 include "../dbcon.php";
+include "wordwrap.php";
 
 $pdf = new FPDF('L','mm',array(215.9,330.2));
 $pdf->AddPage();
@@ -76,17 +77,27 @@ while($row = mysql_fetch_array($query))
 		$pot = mysql_query("select * from m_potongan where mpo_me_id = '$me_id'");
 		$p = mysql_fetch_array($pot);
 		
+		$text = $r['me_first_name'].' '.$r['me_middle_name'].' '.$r['me_last_name'];
+		$text1 = $f['mep_name']. "/" .$r['me_address'];
+		$text2 = $ketSakit;
+		$text3 = $namaObat;
+		
+		$nb = $pdf->WordWrap($text,120);
+		$nb1 = $pdf->WordWrap($text1,120);
+		$nb2 = $pdf->WordWrap($text2,120);
+		$nb3 = $pdf->WordWrap($text3,120);
+		
 		$no++;
 		$pdf->Ln(6);
 		$pdf->SetFont('Times');
 		$pdf->Cell(8,6,$no. ".",1,0,'C');
 		$pdf->Cell(20,6,$row['tpa_tanggal_berobat'],1,0,'L');
-		$pdf->Cell(33,6,$r['me_first_name'].' '.$r['me_middle_name'].' '.$r['me_last_name'] ,1,0,'L');
+		$pdf->Cell(33,6,$text ,1,0,'L');
 		$pdf->Cell(30,6,$umur,1,0,'L');
 		$pdf->Cell(9,6,$gender,1,0,'L');
-		$pdf->Cell(58,6,$f['mep_name']. "/" .$r['me_address'] ,1,0,'L');
-		$pdf->Cell(33,6,$ketSakit,1,0,'L');
-		$pdf->Cell(50,6,$namaObat,1,0,'L');
+		$pdf->Cell(58,6,$text1 ,1,0,'L');
+		$pdf->Cell(33,6,$text2,1,0,'L');
+		$pdf->Cell(50,6,$text3,1,0,'L');
 		$pdf->Cell(30,6,$pot['mpo_jumlah'],1,0,'L');
 		$pdf->Cell(38,6,' ',1,0,'L');
 		
@@ -126,24 +137,42 @@ while($row = mysql_fetch_array($query))
 			$br = mysql_fetch_array($tb);
 			$namaObat .= ', '.$br['mob_nama_obat'];
 		}
-				
+		
+		$text = $r['mp_nama_lengkap'];
+		$text1 = $f['mp_pekerjaan']. "/" .$r['mp_alamat'];
+		$text2 = $ketSakit;
+		$text3 = $namaObat;
+		
+		$nb = $pdf->WordWrap($text,120);
+		$nb1 = $pdf->WordWrap($text1,120);
+		$nb2 = $pdf->WordWrap($text2,120);
+		$nb3 = $pdf->WordWrap($text3,120);
+		
 		$no++;
 		$pdf->Ln(6);
 		$pdf->SetFont('Times');
 		$pdf->Cell(8,6,$no. ".",1,0,'C');
 		$pdf->Cell(20,6,$row['tpa_tanggal_berobat'],1,0,'L');
-		$pdf->Cell(33,6,$r['mp_nama_lengkap'] ,1,0,'L');
+		$pdf->Cell(33,6,$text ,1,0,'L');
 		$pdf->Cell(30,6,$umur,1,0,'L');
 		$pdf->Cell(9,6,$gender,1,0,'L');
-		$pdf->Cell(58,6,$r['mp_pekerjaan']. "/" .$r['mp_alamat'] ,1,0,'L');
-		$pdf->Cell(33,6,$ketSakit,1,0,'L');
-		$pdf->Cell(50,6,$namaObat,1,0,'L');
+		$pdf->Cell(58,6,$text1 ,1,0,'L');
+		$pdf->Cell(33,6,$text2,1,0,'L');
+		$pdf->Cell(50,6,$text3,1,0,'L');
 		$pdf->Cell(30,6,'',1,0,'L');
 		$pdf->Cell(38,6,' ',1,0,'L');
 		
 		
 	}
 }
+
+$h = 6;
+function CheckPageBreak($h)
+	{
+		//If the height h would cause an overflow, add a new page immediately
+		if($this->GetY()+$h>$this->PageBreakTrigger)
+			$this->AddPage($this->CurOrientation);
+	}
 
 $pdf->Output();
 ?>
